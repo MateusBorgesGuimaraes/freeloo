@@ -19,7 +19,7 @@ export default function ButtonLink({
   return (
     <a
       {...props}
-      className={`py-1 inline-block px-4 rounded-md font-semibold transition ${buttonStyles[variants]}  ${className}`}
+      className={`py-1 inline-block px-4 rounded-md font-semibold transition cursor-pointer ${buttonStyles[variants]}  ${className}`}
     >
       {children}
     </a>

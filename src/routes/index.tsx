@@ -1,5 +1,6 @@
 import Features from "@/components/pages/main/Features";
 import Hero from "@/components/pages/main/Hero";
+import Pricing from "@/components/pages/main/Pricing";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/")({
@@ -14,6 +15,9 @@ function App() {
       </div>
       <div>
         <Features />
+      </div>
+      <div>
+        <Pricing />
       </div>
     </div>
   );
