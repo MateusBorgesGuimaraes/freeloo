@@ -4,9 +4,9 @@ export default function ToggleTheme() {
   const { theme, toggleTheme } = useTheme();
   return (
     <button
-      className="py-1 px-1.5 cursor-pointer rounded-md  border border-accent-foreground
-      text-primary-foreground hover:bg-accent-foreground hover:text-white
-      dark:border-primary dark:text-primary dark:hover:bg-primary dark:hover:text-accent
+      className="py-1 px-1.5 cursor-pointer rounded-md  border border-stone-600
+      text-stone-700 hover:border-primary hover:text-primary
+      dark:border-primary dark:text-primary dark:hover:bg-primary dark:hover:text-white
       transition"
       onClick={toggleTheme}
     >

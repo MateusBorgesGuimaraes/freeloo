@@ -2,11 +2,6 @@
 
 @import "tw-animate-css";
 
-/* ===============================
-   Fonts (local)
-================================ */
-
-/* Inter – texto/UI */
 @font-face {
   font-family: "Inter";
   src: url("/inter/Inter_18pt-Light.ttf") format("truetype");
@@ -47,7 +42,6 @@
   font-display: swap;
 }
 
-/* Sora – títulos */
 @font-face {
   font-family: "Sora";
   src: url("/sora/Sora-SemiBold.ttf") format("truetype");
@@ -101,78 +95,29 @@ h4 {
 }
 
 :root {
-  --background: oklch(0.99 0.004 80);
+  --background: white(0.99 0.004 80);
   --foreground: oklch(0.18 0.01 80);
 
-  /* PRIMARY (mantido) */
   --primary: oklch(0.82 0.16 85);
   --primary-hover: oklch(0.76 0.18 85);
   --primary-foreground: oklch(0.18 0.02 85);
 
-  /* SECONDARY */
-  --secondary: oklch(0.96 0.006 80);
-  --secondary-hover: oklch(0.92 0.01 80);
-  --secondary-foreground: oklch(0.26 0.01 80);
-
-  /* MUTED */
-  --muted: oklch(0.93 0.006 80);
-  --muted-foreground: oklch(0.52 0.01 80);
-
-  /* ACCENT (warm gray) */
-  --accent: oklch(0.94 0.01 80);
-  --accent-hover: oklch(0.9 0.015 80);
-  --accent-foreground: oklch(0.22 0.01 80);
-
-  /* DESTRUCTIVE (mantido) */
   --destructive: oklch(0.62 0.22 30);
   --destructive-hover: oklch(0.56 0.26 30);
   --destructive-foreground: oklch(0.98 0 0);
-
-  /* BORDERS */
-  --border: oklch(0.9 0.006 80);
-  --border-subtle: oklch(0.94 0.004 80);
-  --border-default: var(--border);
-  --border-strong: oklch(0.82 0.008 80);
-
-  --ring: var(--primary);
 }
 
-/* ===== Dark mode ===== */
 .dark {
-  --background: oklch(0.16 0.008 80);
+  --background: black;
   --foreground: oklch(0.95 0.004 80);
 
-  /* PRIMARY (mantido) */
   --primary: oklch(0.78 0.16 85);
   --primary-hover: oklch(0.84 0.18 85);
   --primary-foreground: oklch(0.15 0.02 85);
 
-  /* SECONDARY */
-  --secondary: oklch(0.26 0.01 80);
-  --secondary-hover: oklch(0.32 0.012 80);
-  --secondary-foreground: oklch(0.9 0.004 80);
-
-  /* MUTED */
-  --muted: oklch(0.26 0.01 80);
-  --muted-foreground: oklch(0.64 0.01 80);
-
-  /* ACCENT */
-  --accent: oklch(0.3 0.012 80);
-  --accent-hover: oklch(0.36 0.016 80);
-  --accent-foreground: oklch(0.95 0.004 80);
-
-  /* DESTRUCTIVE (mantido) */
   --destructive: oklch(0.5 0.2 30);
   --destructive-hover: oklch(0.58 0.24 30);
   --destructive-foreground: oklch(0.95 0 0);
-
-  /* BORDERS */
-  --border: oklch(0.28 0.008 80);
-  --subtle: oklch(0.32 0.008 80);
-  --default: var(--border);
-  --strong: oklch(0.45 0.01 80);
-
-  --ring: var(--primary);
 }
 
 @theme inline {
@@ -183,25 +128,9 @@ h4 {
   --color-primary-hover: var(--primary-hover);
   --color-primary-foreground: var(--primary-foreground);
 
-  --color-secondary: var(--secondary);
-  --color-secondary-hover: var(--secondary-hover);
-  --color-secondary-foreground: var(--secondary-foreground);
-
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-
   --color-destructive: var(--destructive);
   --color-destructive-hover: var(--destructive-hover);
   --color-destructive-foreground: var(--destructive-foreground);
-
-  --color-border: var(--border);
-  --color-subtle: var(--subtle);
-  --color-default: var(--default);
-  --color-strong: var(--strong);
-  --color-ring: var(--ring);
 
   --font-sans: "Inter", system-ui, sans-serif;
   --font-heading: "Sora", "Inter", system-ui, sans-serif;
@@ -215,9 +144,6 @@ h4 {
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
   body {
     @apply bg-background text-foreground;
   }

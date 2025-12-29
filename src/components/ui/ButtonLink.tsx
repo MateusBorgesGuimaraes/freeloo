@@ -12,14 +12,14 @@ export default function ButtonLink({
 }: ButtonLinkProps) {
   const { className } = props;
   const buttonStyles = {
-    default: "bg-primary hover:bg-primary-hover dark:text-accent",
+    default: "bg-primary text-primary-foreground hover:bg-primary-hover",
     ghost:
-      "border border-accent-foreground text-accent-foreground hover:text-muted-foreground",
+      "border border-stone-300 font-semibold text-stone-700 hover:bg-stone-100 dark:border-stone-700 dark:text-stone-300 dark:hover:bg-stone-900",
   };
   return (
     <a
       {...props}
-      className={`py-1 inline-block px-4 rounded-md font-semibold transition cursor-pointer ${buttonStyles[variants]}  ${className}`}
+      className={`inline-flex items-center justify-center rounded-xl px-8 py-4 text-lg font-semibold transition-colors duration-200   ${buttonStyles[variants]}  ${className}`}
     >
       {children}
     </a>

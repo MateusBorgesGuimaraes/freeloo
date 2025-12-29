@@ -1,6 +1,5 @@
 import { useTheme } from "@/contexts/theme-context";
 import ToggleTheme from "../ui/ToggleTheme";
-import ButtonLink from "../ui/ButtonLink";
 
 export default function Header() {
   const { theme } = useTheme();
@@ -11,7 +10,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="bg-background border-b border-dashed border-border p-4">
+    <header className="bg-background border-b border-dashed border-stone-200 dark:border-stone-800 p-4">
       <nav className="wrapper">
         <nav className="flex items-center justify-between">
           <div>
@@ -34,7 +33,12 @@ export default function Header() {
               ))}
             </ul>
             <div className="flex items-center gap-4">
-              <ButtonLink href="/">Get Start</ButtonLink>
+              <a
+                className="py-2 px-4 bg-primary hover:bg-primary-hover rounded-md duration-300 dark:text-stone-800"
+                href="/"
+              >
+                Get Start
+              </a>
               <ToggleTheme />
             </div>
           </div>

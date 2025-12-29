@@ -9,53 +9,41 @@ export default function PlanCard({ variants }: PlanCardProps) {
   const planConfig = {
     free: {
       title: "FREE",
-      subtitle: "Grátis para sempre",
+      subtitle: "Free forever",
       icon: Gift,
-      benefits: ["5 clientes", "10 serviços", "Upload de arquivos"],
+      benefits: ["5 customers", "10 services", "File uploads"],
       buttonVariant: "ghost",
-      bgClass: "bg-background",
+      highlighted: false,
       badge: null,
-      iconBg: "bg-secondary",
-      iconColor: "text-muted-foreground",
-      titleColor: "text-foreground",
-      borderColor: "border-border",
     },
     pro: {
       title: "PRO",
-      subtitle: "Para negócios em crescimento",
+      subtitle: "For growing businesses",
       icon: Sparkles,
       benefits: [
-        "50 clientes",
-        "Serviços ilimitados",
-        "Suporte prioritário",
-        "Análises avançadas",
+        "50 customers",
+        "Unlimited services",
+        "Priority support",
+        "Advanced analytics",
       ],
       buttonVariant: "default",
-      bgClass: "bg-secondary",
-      badge: "Mais Popular",
-      iconBg: "bg-primary/20",
-      iconColor: "text-primary",
-      titleColor: "text-foreground",
-      borderColor: "border-primary/30",
+      highlighted: true,
+      badge: "Most Popular",
     },
     deluxe: {
       title: "DELUXE",
-      subtitle: "Tudo que você precisa",
+      subtitle: "Everything you need",
       icon: Crown,
       benefits: [
-        "Clientes ilimitados",
-        "Serviços ilimitados",
-        "Suporte 24/7 Premium",
-        "Integrações customizadas",
-        "Opção white-label",
+        "Unlimited customers",
+        "Unlimited services",
+        "24/7 Premium support",
+        "Custom integrations",
+        "White-label option",
       ],
       buttonVariant: "premium",
-      bgClass: "bg-accent/30",
-      badge: "Melhor Valor",
-      iconBg: "bg-accent",
-      iconColor: "text-accent-foreground",
-      titleColor: "text-foreground",
-      borderColor: "border-accent",
+      highlighted: false,
+      badge: "Best Value",
     },
   };
 
@@ -64,48 +52,73 @@ export default function PlanCard({ variants }: PlanCardProps) {
 
   return (
     <div
-      className={`relative border-2 ${config.borderColor} p-8 rounded-2xl flex flex-col gap-6 min-h-96 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 ${config.bgClass} overflow-hidden group`}
+      className={`
+          relative flex min-h-96 flex-col gap-6 rounded-2xl p-8
+          border
+          ${
+            config.highlighted
+              ? "border-primary/40"
+              : "border-stone-200 dark:border-stone-800"
+          }
+          bg-background
+          transition-colors duration-200
+        `}
     >
       {config.badge && (
-        <div className="absolute top-0 right-0 bg-primary text-primary-foreground px-4 py-1 rounded-bl-2xl rounded-tr-xl text-sm font-bold shadow-lg">
+        <div
+          className="
+              absolute right-4 top-4
+              rounded-full
+              bg-primary/10 text-primary
+              px-3 py-1
+              text-xs font-semibold
+            "
+        >
           {config.badge}
         </div>
       )}
 
-      <div className="absolute -top-20 -right-20 w-40 h-40 bg-primary/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-500"></div>
-      <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-accent/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-500"></div>
-
-      <div className="relative z-10">
-        <div className="flex items-center gap-3 mb-2">
+      {/* Header */}
+      <div>
+        <div className="mb-2 flex items-center gap-3">
           <div
-            className={`p-2 rounded-lg ${config.iconBg} shadow-md ${config.iconColor}`}
+            className={`
+                rounded-lg p-2
+                ${
+                  config.highlighted
+                    ? "bg-primary/10 text-primary"
+                    : "bg-stone-100 dark:bg-stone-900 text-stone-600 dark:text-stone-400"
+                }
+              `}
           >
-            <Icon size={28} />
+            <Icon size={24} />
           </div>
-          <h2 className={`text-3xl font-bold ${config.titleColor}`}>
+
+          <h2 className="text-2xl font-semibold text-foreground">
             {config.title}
           </h2>
         </div>
-        <p className="text-muted-foreground font-medium">{config.subtitle}</p>
+
+        <p className="text-sm text-stone-600 dark:text-stone-400">
+          {config.subtitle}
+        </p>
       </div>
 
-      <div className="relative z-10 grow">
-        <h4
-          className={`text-sm font-semibold uppercase tracking-wider mb-4 ${config.titleColor}`}
-        >
-          O que está incluído
+      {/* Benefits */}
+      <div className="flex-1">
+        <h4 className="mb-4 text-xs font-semibold uppercase tracking-wide text-stone-500 dark:text-stone-400">
+          What's included
         </h4>
+
         <ul className="space-y-3">
           {config.benefits.map((benefit, index) => (
-            <li key={index} className="flex gap-3 items-start group/item">
-              <div className="mt-1 bg-primary rounded-full p-1 shadow-md group-hover/item:scale-110 transition-transform">
-                <Check
-                  size={16}
-                  className="text-primary-foreground"
-                  strokeWidth={3}
-                />
-              </div>
-              <span className="font-medium text-foreground/80 group-hover/item:text-foreground transition-colors">
+            <li key={index} className="flex items-start gap-3">
+              <Check
+                size={16}
+                className="mt-0.5 text-primary"
+                strokeWidth={2.5}
+              />
+              <span className="text-sm text-stone-700 dark:text-stone-300">
                 {benefit}
               </span>
             </li>
@@ -113,14 +126,13 @@ export default function PlanCard({ variants }: PlanCardProps) {
         </ul>
       </div>
 
-      <div className="relative z-10 mt-auto">
-        <PrincingButtonLink
-          variants={config.buttonVariant as "ghost" | "default" | "premium"}
-          className="w-full"
-        >
-          COMEÇAR
-        </PrincingButtonLink>
-      </div>
+      {/* CTA */}
+      <PrincingButtonLink
+        variants={config.buttonVariant as "ghost" | "default" | "premium"}
+        className="w-full"
+      >
+        Start now
+      </PrincingButtonLink>
     </div>
   );
 }

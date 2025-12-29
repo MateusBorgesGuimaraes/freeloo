@@ -8,14 +8,39 @@ type FeatureProps = {
 
 export default function Feature({ content, title, icon: Icon }: FeatureProps) {
   return (
-    <div className="group w-full rounded-2xl border border-border bg-background py-8 px-8 transition-all duration-300 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5">
-      <div className="flex flex-col items-center gap-4">
-        <div className="p-4 rounded-xl bg-linear-to-b from-primary/10 to-accent/10 transition-all duration-300 group-hover:from-primary/15 group-hover:to-accent/15">
-          <Icon className="w-8 h-8 text-primary" />
+    <div
+      className="
+        group w-full
+        rounded-2xl
+        border border-stone-200 dark:border-stone-800
+        bg-background
+        px-8 py-8
+        transition-colors duration-200
+        hover:border-primary/40
+      "
+    >
+      <div className="flex flex-col items-center gap-4 text-center">
+        <div
+          className="
+            rounded-xl p-4
+            bg-stone-100 dark:bg-stone-900
+            transition-colors duration-200
+            group-hover:bg-primary/10
+          "
+        >
+          <Icon
+            className="
+              h-8 w-8
+              text-stone-700 dark:text-stone-300
+              transition-colors duration-200
+              group-hover:text-primary
+            "
+          />
         </div>
-        <h3 className="text-xl font-bold text-foreground">{title}</h3>
 
-        <p className="text-center text-muted-foreground leading-relaxed">
+        <h3 className="text-lg font-semibold text-foreground">{title}</h3>
+
+        <p className="text-sm leading-relaxed text-stone-600 dark:text-stone-400">
           {content}
         </p>
       </div>

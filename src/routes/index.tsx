@@ -1,3 +1,4 @@
+import Cta from "@/components/pages/main/Cta";
 import Features from "@/components/pages/main/Features";
 import Hero from "@/components/pages/main/Hero";
 import Pricing from "@/components/pages/main/Pricing";
@@ -18,6 +19,9 @@ function App() {
       </div>
       <div>
         <Pricing />
+      </div>
+      <div>
+        <Cta />
       </div>
     </div>
   );
