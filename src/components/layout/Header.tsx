@@ -4,7 +4,7 @@ import ToggleTheme from "../ui/ToggleTheme";
 export default function Header() {
   const { theme } = useTheme();
   const links = [
-    { label: "login", link: "/" },
+    { label: "login", link: "/login" },
     { label: "about", link: "/" },
     { label: "contact", link: "/" },
   ];
@@ -14,10 +14,12 @@ export default function Header() {
       <nav className="wrapper">
         <nav className="flex items-center justify-between">
           <div>
-            <img
-              className="h-6"
-              src={theme === "light" ? "/logo-ligth.svg" : "/logo-dark.svg"}
-            />
+            <a href="/">
+              <img
+                className="h-6"
+                src={theme === "light" ? "/logo-ligth.svg" : "/logo-dark.svg"}
+              />
+            </a>
           </div>
           <div className="flex items-center justify-between gap-12 font-semibold">
             <ul className="flex items-center gap-5">
