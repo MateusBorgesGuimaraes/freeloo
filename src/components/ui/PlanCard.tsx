@@ -53,72 +53,72 @@ export default function PlanCard({ variants }: PlanCardProps) {
   return (
     <div
       className={`
-          relative flex min-h-96 flex-col gap-6 rounded-2xl p-8
-          border
-          ${
-            config.highlighted
-              ? "border-primary/40"
-              : "border-stone-200 dark:border-stone-800"
-          }
-          bg-background
-          transition-colors duration-200
-        `}
+        relative flex min-h-96 flex-col gap-4 sm:gap-6
+        rounded-xl sm:rounded-2xl
+        p-6 sm:p-8
+        border
+        max-w-sm mx-auto w-full
+        ${
+          config.highlighted
+            ? "border-primary/40 shadow-lg shadow-primary/5"
+            : "border-stone-200 dark:border-stone-800"
+        }
+        bg-background
+        transition-all duration-200
+        hover:shadow-xl
+        ${config.highlighted ? "scale-100 md:scale-105" : ""}
+      `}
     >
       {config.badge && (
         <div
           className="
-              absolute right-4 top-4
-              rounded-full
-              bg-primary/10 text-primary
-              px-3 py-1
-              text-xs font-semibold
-            "
+            absolute right-3 top-3 sm:right-4 sm:top-4
+            rounded-full
+            bg-primary/10 text-primary
+            px-2.5 py-1 sm:px-3 sm:py-1
+            text-xs font-semibold
+          "
         >
           {config.badge}
         </div>
       )}
 
-      {/* Header */}
       <div>
-        <div className="mb-2 flex items-center gap-3">
+        <div className="mb-2 flex items-center gap-2 sm:gap-3">
           <div
             className={`
-                rounded-lg p-2
-                ${
-                  config.highlighted
-                    ? "bg-primary/10 text-primary"
-                    : "bg-stone-100 dark:bg-stone-900 text-stone-600 dark:text-stone-400"
-                }
-              `}
+              rounded-lg p-1.5 sm:p-2
+              ${
+                config.highlighted
+                  ? "bg-primary/10 text-primary"
+                  : "bg-stone-100 dark:bg-stone-900 text-stone-600 dark:text-stone-400"
+              }
+            `}
           >
-            <Icon size={24} />
+            <Icon size={20} className="sm:w-6 sm:h-6" />
           </div>
-
-          <h2 className="text-2xl font-semibold text-foreground">
+          <h2 className="text-xl sm:text-2xl font-semibold text-foreground">
             {config.title}
           </h2>
         </div>
-
-        <p className="text-sm text-stone-600 dark:text-stone-400">
+        <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-400">
           {config.subtitle}
         </p>
       </div>
 
-      {/* Benefits */}
       <div className="flex-1">
-        <h4 className="mb-4 text-xs font-semibold uppercase tracking-wide text-stone-500 dark:text-stone-400">
+        <h4 className="mb-3 sm:mb-4 text-xs font-semibold uppercase tracking-wide text-stone-500 dark:text-stone-400">
           What's included
         </h4>
-
-        <ul className="space-y-3">
+        <ul className="space-y-2.5 sm:space-y-3">
           {config.benefits.map((benefit, index) => (
-            <li key={index} className="flex items-start gap-3">
+            <li key={index} className="flex items-start gap-2 sm:gap-3">
               <Check
                 size={16}
-                className="mt-0.5 text-primary"
+                className="mt-0.5 shrink-0 text-primary"
                 strokeWidth={2.5}
               />
-              <span className="text-sm text-stone-700 dark:text-stone-300">
+              <span className="text-xs sm:text-sm text-stone-700 dark:text-stone-300 leading-relaxed">
                 {benefit}
               </span>
             </li>
@@ -126,10 +126,9 @@ export default function PlanCard({ variants }: PlanCardProps) {
         </ul>
       </div>
 
-      {/* CTA */}
       <PrincingButtonLink
         variants={config.buttonVariant as "ghost" | "default" | "premium"}
-        className="w-full"
+        className="w-full text-sm sm:text-base py-2 sm:py-2.5"
       >
         Start now
       </PrincingButtonLink>

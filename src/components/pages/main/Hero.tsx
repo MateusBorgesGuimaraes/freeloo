@@ -1,28 +1,32 @@
 import ButtonLink from "@/components/ui/ButtonLink";
 import SocialProof from "@/components/ui/SocialProof";
 import { useTheme } from "@/contexts/theme-context";
-import {
-  BanknoteXIcon,
-  CreditCardIcon,
-  PersonStandingIcon,
-} from "lucide-react";
+import { Banknote, CreditCard, Users } from "lucide-react";
 
 export default function Hero() {
   const { theme } = useTheme();
+
   return (
-    <section className="wrapper flex-col flex gap-3.5 items-center">
-      <h1 className="text-5xl">
-        Manage your clients and <br /> projects all in one place.
+    <section className="wrapper flex-col flex gap-3.5 items-center px-4 py-8 md:py-12">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-center leading-tight">
+        Manage your clients and <br className="hidden sm:block" /> projects all
+        in one place.
       </h1>
-      <p>
-        A complete platform for freelancers and small businesses <br /> to
-        organize their services, payments, and files.
+
+      <p className="text-center text-sm sm:text-base md:text-lg text-foreground/80 max-w-2xl">
+        A complete platform for freelancers and small businesses{" "}
+        <br className="hidden sm:block" /> to organize their services, payments,
+        and files.
       </p>
-      <div className="flex items-center gap-5 pt-3.5">
-        <ButtonLink href="/" className="py-2 px-8 text-2xl">
+
+      <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-5 pt-3.5 w-full sm:w-auto">
+        <ButtonLink
+          href="/"
+          className="py-2 px-6 sm:px-8 text-lg sm:text-xl md:text-2xl w-full sm:w-auto justify-center"
+        >
           Start Free
           <svg
-            className="ml-2 w-5 h-5"
+            className="ml-2 w-4 h-4 sm:w-5 sm:h-5"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -36,20 +40,26 @@ export default function Hero() {
           </svg>
         </ButtonLink>
 
-        <ButtonLink variants="ghost" href="/" className="py-2 px-8 text-2xl">
+        <ButtonLink
+          variants="ghost"
+          href="/"
+          className="py-2 px-6 sm:px-8 text-lg sm:text-xl md:text-2xl w-full sm:w-auto justify-center"
+        >
           View Demo
         </ButtonLink>
       </div>
-      <div className="grid grid-cols-[repeat(3,minmax(220px,1fr))] gap-4 mt-4">
-        <SocialProof text="free foverer" icon={BanknoteXIcon} />
-        <SocialProof text="No card required" icon={CreditCardIcon} />
-        <SocialProof text="5 clients included" icon={PersonStandingIcon} />
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mt-4 w-full max-w-4xl">
+        <SocialProof text="free forever" icon={Banknote} />
+        <SocialProof text="No card required" icon={CreditCard} />
+        <SocialProof text="5 clients included" icon={Users} />
       </div>
 
-      <div className="h-125 overflow-hidden rounded-2xl">
+      <div className="w-full max-w-6xl mt-6 sm:mt-8 overflow-hidden rounded-lg sm:rounded-xl md:rounded-2xl shadow-2xl">
         <img
           src={theme === "light" ? "./dash-1.png" : "./dash-1-dark.png"}
-          className="object-cover"
+          alt="Dashboard preview"
+          className="w-full h-auto object-cover"
         />
       </div>
     </section>

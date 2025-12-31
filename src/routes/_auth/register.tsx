@@ -15,6 +15,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { registerUser } from "@/api/auth";
+import { useMutation } from "@tanstack/react-query";
+import { toast } from "sonner";
+import { useNavigate } from "@tanstack/react-router";
+import { useAuthStore } from "@/stores/auth.store";
 
 export const Route = createFileRoute("/_auth/register")({
   component: RouteComponent,
@@ -30,8 +35,24 @@ function RouteComponent() {
     },
   });
 
+  const navigate = useNavigate();
+  const setUser = useAuthStore((s) => s.setUser);
+  const registerMutation = useMutation({
+    mutationFn: registerUser,
+
+    onSuccess(data) {
+      setUser(data.user);
+
+      navigate({ to: "/" });
+    },
+
+    onError(error: Error) {
+      toast.error(error.message);
+    },
+  });
+
   function onSubmit(values: RegisterSchemaData) {
-    console.log(values);
+    registerMutation.mutate(values);
   }
 
   return (
