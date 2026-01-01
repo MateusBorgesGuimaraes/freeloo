@@ -7,11 +7,15 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { loginSchema, type LoginSchemaData } from "@/schemas/login-schema";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useAuthStore } from "@/stores/auth.store";
+import { useMutation } from "@tanstack/react-query";
+import { loginUser } from "@/api/auth";
+import { toast } from "sonner";
 
 export const Route = createFileRoute("/_auth/login")({
   component: RouteComponent,
@@ -26,8 +30,24 @@ function RouteComponent() {
     },
   });
 
+  const navigate = useNavigate();
+  const setUser = useAuthStore((s) => s.setUser);
+  const registerMutation = useMutation({
+    mutationFn: loginUser,
+
+    onSuccess(data) {
+      setUser(data.user);
+
+      navigate({ to: "/" });
+    },
+
+    onError(error: Error) {
+      toast.error(error.message);
+    },
+  });
+
   function onSubmit(values: LoginSchemaData) {
-    console.log(values);
+    registerMutation.mutate(values);
   }
 
   return (

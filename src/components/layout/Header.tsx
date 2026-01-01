@@ -12,20 +12,36 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
+import { useMutation } from "@tanstack/react-query";
+import { logoutUser } from "@/api/auth";
+import { useNavigate } from "@tanstack/react-router";
+import { toast } from "sonner";
 
 export default function Header() {
   const { theme } = useTheme();
   const { user, isAuthenticated, clearUser } = useAuthStore();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const links = [
     { label: "About", link: "/" },
     { label: "Contact", link: "/" },
   ];
 
+  const logoutMutation = useMutation({
+    mutationFn: logoutUser,
+    onSuccess: () => {
+      clearUser();
+      navigate({ to: "/login" });
+      toast.success("Logout realizado com sucesso");
+    },
+    onError: (error: Error) => {
+      toast.error(error.message || "Erro ao fazer logout");
+    },
+  });
+
   const handleLogout = () => {
-    clearUser();
-    window.location.href = "/login";
+    logoutMutation.mutate();
   };
 
   return (
