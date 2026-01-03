@@ -21,7 +21,7 @@ export default function Hero() {
 
       <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-5 pt-3.5 w-full sm:w-auto">
         <ButtonLink
-          href="/"
+          link="/"
           className="py-2 px-6 sm:px-8 text-lg sm:text-xl md:text-2xl w-full sm:w-auto justify-center"
         >
           Start Free
@@ -42,7 +42,7 @@ export default function Hero() {
 
         <ButtonLink
           variants="ghost"
-          href="/"
+          link="/"
           className="py-2 px-6 sm:px-8 text-lg sm:text-xl md:text-2xl w-full sm:w-auto justify-center"
         >
           View Demo

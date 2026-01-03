@@ -14,7 +14,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { useMutation } from "@tanstack/react-query";
 import { logoutUser } from "@/api/auth";
-import { useNavigate } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 import { toast } from "sonner";
 
 export default function Header() {
@@ -49,25 +49,25 @@ export default function Header() {
       <nav className="wrapper">
         <div className="flex items-center justify-between">
           <div>
-            <a href="/">
+            <Link to="/">
               <img
                 className="h-6"
                 src={theme === "light" ? "/logo-ligth.svg" : "/logo-dark.svg"}
                 alt="Logo"
               />
-            </a>
+            </Link>
           </div>
 
           <div className="hidden md:flex items-center justify-between gap-12 font-semibold">
             <ul className="flex items-center gap-5">
               {links.map((link) => (
                 <li key={link.label}>
-                  <a
+                  <Link
                     className="hover:text-primary-hover transition"
-                    href={link.link}
+                    to={link.link}
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -106,18 +106,18 @@ export default function Header() {
                 </DropdownMenu>
               ) : (
                 <>
-                  <a
+                  <Link
                     className="py-2 px-4 hover:underline transition"
-                    href="/login"
+                    to="/login"
                   >
                     Login
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     className="py-2 px-4 bg-primary hover:bg-primary-hover rounded-md duration-300 dark:text-stone-800"
-                    href="/register"
+                    to="/register"
                   >
                     Get Started
-                  </a>
+                  </Link>
                 </>
               )}
               <ToggleTheme />
@@ -145,13 +145,13 @@ export default function Header() {
             <ul className="flex flex-col gap-4 font-semibold">
               {links.map((link) => (
                 <li key={link.label}>
-                  <a
+                  <Link
                     className="block hover:text-primary-hover transition"
-                    href={link.link}
+                    to={link.link}
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -173,20 +173,20 @@ export default function Header() {
                 </>
               ) : (
                 <>
-                  <a
+                  <Link
                     className="py-2 px-4 text-center border border-primary text-primary hover:bg-primary hover:text-white rounded-md transition font-semibold"
-                    href="/login"
+                    to="/login"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Login
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     className="py-2 px-4 text-center bg-primary hover:bg-primary-hover rounded-md duration-300 dark:text-stone-800 font-semibold"
-                    href="/register"
+                    to="/register"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Get Started
-                  </a>
+                  </Link>
                 </>
               )}
             </div>
